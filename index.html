@@ -220,14 +220,73 @@
             <div class="profile-logo">
                 <img src="path/to/your-logo.png" alt="Profile Logo">
             </div>
-            <button type="button" class="rounded-button" onclick="addFamilyMember()">Add More Family Members</button>
+            <button style="text-decoration: none;" type="button" class="rounded-button" onclick="addFamilyMember()">Add More Family Members</button>
         </div>
     </section>
-    <section class="form-section" id="familyMembersContainer">
-        <!-- Family Members will be added here -->
-    </section>
+    <div id="familyMembersContainer"></div>
     
-    
+    <script>
+        function addFamilyMember() {
+            var container = document.getElementById('familyMembersContainer');
+
+            // Create a unique ID for the card
+            var cardId = 'familyCard' + Date.now();
+
+            // Create the family member card
+            var card = document.createElement('div');
+            card.className = 'card__2';
+            card.id = cardId;
+
+            // Create the form for the family member
+            var form = document.createElement('form');
+
+            // Create form elements
+            var nameInput = document.createElement('div');
+            nameInput.className = 'form-floating mb-3';
+            nameInput.innerHTML = '<input type="text" class="form-control" placeholder="Name" required>';
+            nameInput.innerHTML += '<label>Name</label>';
+
+            var ageInput = document.createElement('div');
+            ageInput.className = 'form-floating mb-3';
+            ageInput.innerHTML = '<input type="number" class="form-control" placeholder="Age" required>';
+            ageInput.innerHTML += '<label>Age</label>';
+
+            var genderSelect = document.createElement('div');
+            genderSelect.className = 'form-floating mb-3';
+            genderSelect.innerHTML = '<select class="form-select" required>';
+            genderSelect.innerHTML += '<option value="" disabled selected>Select Gender</option>';
+            genderSelect.innerHTML += '<option value="male">Male</option>';
+            genderSelect.innerHTML += '<option value="female">Female</option>';
+            genderSelect.innerHTML += '<option value="other">Other</option>';
+            genderSelect.innerHTML += '</select>';
+            genderSelect.innerHTML += '<label>Select Gender</label>';
+
+            var deleteButton = document.createElement('button');
+            deleteButton.type = 'button';
+            deleteButton.className = 'rounded-button btn-danger';
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function() { deleteFamilyMember(cardId); };
+
+            // Append form elements to the form
+            form.appendChild(nameInput);
+            form.appendChild(ageInput);
+            form.appendChild(genderSelect);
+            form.appendChild(deleteButton);
+
+            // Append the form to the card
+            card.appendChild(form);
+
+            // Append the card to the container
+            container.appendChild(card);
+        }
+
+        function deleteFamilyMember(cardId) {
+            var cardToDelete = document.getElementById(cardId);
+            if (cardToDelete) {
+                cardToDelete.remove();
+            }
+        }
+    </script>
     
     <script>
           // Validate Your Name
