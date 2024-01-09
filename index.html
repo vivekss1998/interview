@@ -105,7 +105,7 @@
             display: inline-block;
         }
         .gradient-orange {
-            background: linear-gradient(to right, #ff2a00, #ff4747, #FFB347); /* Gradient orange background */
+            background: linear-gradient(to right, #ff006a, #ff4747, #FFB347); /* Gradient orange background */
         }
         .rounded-grey-button {
             border-radius: 30px;
@@ -243,15 +243,15 @@
         </div>
     </section>
     <div id="familyMembersContainer"></div>
-    <section class="form-section total-amount-card" id="totalAmountCard">
-
-    <div id="totalAmountCard" class="card__2" >
-        <div class="card-header">
-            <h4><strong>Total Payable Amount</strong></h4>
-        </div>
-        <h3 style="color: orangered;"><strong> ₹<span id="totalAmount" style="color: orangered;">0</span></strong></h3>
-    </div>
-</section>
+    <section class="form-section total-amount-card" id="totalAmountCard" >
+        <section class="form-section total-amount-card" id="totalAmountCard" >
+            <div class="card__2">
+                <div class="card-header">
+                    <h4><strong>Total Payable Amount</strong></h4>
+                </div>
+                <h3 style="color: orangered;"><strong> ₹<span id="totalAmount">0</span></strong></h3>
+            </div>
+        </section>
 <section class="form-section " id="termsSection">
     <div class="card gradient-orange text-center wider-section">
         <div class="card-body">
@@ -265,66 +265,60 @@
         </div>
     </div>
 </section>
-    <script>
-        document.getElementById('addFamilyMembers').addEventListener('click', function(e) {
-            e.preventDefault()style="color: black;"; // Prevent the default anchor behavior
 
-            var container = document.getElementById('familyMembersContainer');
-            var totalAmountCard = document.getElementById('totalAmountCard');
+    
+<script>
 
-            // Check if less than 4 cards are present
-            if (container.children.length < 4) {
-                var newCard = createFamilyMemberCard();
-                container.appendChild(newCard);
-            }
 
-            // Show the total amount card
-            totalAmountCard.style.display = 'block';
-        });
-    </script>
-    <script>
-        var totalFromCard2 = 6000; // Assuming this is the total from card 2
-        var totalFromCard4 = 6000; // Assuming this is the total from card 4
-        var totalAmount = totalFromCard2 + totalFromCard4;
+function addFamilyMember() {
+    const container = document.getElementById('familyMembersContainer');
+    const card = document.createElement('div');
+    card.className = 'card__2';
+    card.innerHTML = `
+        <div class="card-header">
+            <h4><strong>Family Member Fees</strong></h4>
+            <div class="price" style="color: orangered;"><strong>₹6000</strong></div>
+        </div>
+        <form>
+            <!-- Your family member form elements here -->
+            <button type="button" class="btn btn-danger" onclick="removeFamilyMember(this)">Delete</button>
+        </form>
+    `;
+    container.appendChild(card);
+    updateTotalAmount();
+}
 
-        function addFamilyMember() {
-            var container = document.getElementById('familyMembersContainer');
-            var cardId = 'familyCard' + Date.now();
-            var card = document.createElement('div');
-            card.className = 'card__2';
-            card.id = cardId;
-            var form = document.createElement('form');
-            // Form contents...
-            var deleteButton = document.createElement('button');
-            deleteButton.type = 'button';
-            deleteButton.className = 'rounded-button btn-danger';
-            deleteButton.textContent = 'Delete';
-            deleteButton.onclick = function() { deleteFamilyMember(cardId); };
-            form.appendChild(deleteButton);
-            card.appendChild(form);
-            container.appendChild(card);
-            updateTotalAmount();
-        }
+function removeFamilyMember(button) {
+    const card = button.closest('.card__2');
+    card.remove();
+    updateTotalAmount();
+}
 
-        function deleteFamilyMember(cardId) {
-            var cardToDelete = document.getElementById(cardId);
-            if (cardToDelete) {
-                cardToDelete.remove();
-            }
-            updateTotalAmount();
-        }
+function updateTotalAmount() {
+    var totalCard = document.getElementById('totalAmountCard');
+    var totalSpan = document.getElementById('totalAmount');
+    var remainingFamilyMembers = document.getElementById('familyMembersContainer').children.length;
 
-        function updateTotalAmount() {
-            var totalCard = document.getElementById('totalAmountCard');
-            var totalSpan = document.getElementById('totalAmount');
-            totalAmount = totalFromCard2 + totalFromCard4;
-            totalSpan.textContent = totalAmount;
-            totalCard.style.display = 'block';
-        }
+    if (remainingFamilyMembers > 0) {
+        totalCard.style.display = 'block';
 
-        // Initial call to update total amount
-        updateTotalAmount();
-    </script>
+        // Retrieve registration fees from card 2
+        var registrationFeesFromCard2 = parseFloat(document.querySelector('#delegateCard .price strong').textContent);
+
+        // Retrieve family member fees from card 4
+        var familyMemberFeesFromCard4 = parseFloat(document.querySelector('#familyMemberSection .price strong').textContent);
+
+        // Calculate total amount dynamically
+        var totalAmount = registrationFeesFromCard2 + (familyMemberFeesFromCard4 * remainingFamilyMembers);
+
+        // Update total amount in the span
+        totalSpan.textContent = totalAmount.toFixed(2);
+    } else {
+        totalCard.style.display = 'none';
+    }
+}
+</script>
+
     <script>
         function addFamilyMember() {
             var container = document.getElementById('familyMembersContainer');
