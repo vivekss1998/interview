@@ -6,10 +6,9 @@
     <title>Registration Form</title>
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-       body, html {
+        body, html {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -40,20 +39,22 @@
             background: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: auto;
             max-width: 600px;
             border-top: 4px solid rgb(255, 2, 162);
         }
+
         .card__2 {
             background: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: auto;
             max-width: 600px;
             border-top: 4px solid orangered;
         }
+
         .card-header {
             display: flex;
             justify-content: space-between;
@@ -66,11 +67,12 @@
         .card-header h3 {
             margin: 0;
         }
+
         .card__3 {
             /* background: linear-gradient(to right, #ffac40, #ff7300); */
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: auto;
             max-width: 600px;
             text-align: center;
@@ -92,9 +94,11 @@
             max-height: 80%;
             border-radius: 50%;
         }
-        .btn{
+
+        .btn {
             margin-left: 43%;
         }
+
         .rounded-button {
             border-radius: 30px;
             padding: 10px 20px;
@@ -104,9 +108,11 @@
             text-decoration: none;
             display: inline-block;
         }
+
         .gradient-orange {
             background: linear-gradient(to right, #ff006a, #ff4747, #FFB347); /* Gradient orange background */
         }
+
         .rounded-grey-button {
             border-radius: 30px;
             padding: 10px 20px;
@@ -116,161 +122,164 @@
             text-decoration: none;
             display: block;
         }
-   
+
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Registration Form</h1>
-    </header>
+<header class="header">
+    <h1>Registration Form</h1>
+</header>
 
+<section class="form-section">
+    <h2 class="form-heading"><strong>Please Select The Registration Type</strong></h2>
+    <div class="card">
+        <form>
+            <input type="radio" name="role" value="delegation">
+            <label class="radio-container">Delegation
+                <span class="checkmark"></span>
+            </label>
+            <br>
+            <input type="radio" name="role" value="executive">
+            <label class="radio-container">Executive Committee Member
+                <span class="checkmark"></span>
+            </label>
+        </form>
+    </div>
+</section>
 
-    <section class="form-section">
-        <h2 class="form-heading"><strong>Please Select The Registration Type</strong></h2>
-        <div class="card">
-            <form>
-                <input type="radio" name="role" value="delegation">
-                <label class="radio-container">Delegation
-                    <span class="checkmark"></span>
+<section class="form-section" id="delegateSection" style="display: none;">
+    <h5 class="form-heading" style="color: orangered;">DELEGATE REGISTRATION</h5>
+    <h1 class="form-heading"><strong>Details</strong></h1>
+    <div class="card__2" id="delegateCard">
+        <div class="card-header">
+            <h4><strong>Registration Fees</strong></h4>
+            <div class="price" style="color: orangered;"><strong>₹6000</strong></div>
+        </div>
+
+        <form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="yourName" placeholder="Your Name" required>
+                <label for="yourName">Your Name</label>
+                <span id="yourNameError" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="designation" placeholder="Designation" required>
+                <label for="designation">Designation</label>
+                <span id="designationError" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="instituteName" placeholder="Name of the Institute" required>
+                <label for="instituteName">Name of the Institute</label>
+                <span id="instituteNameError" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="institutionAddress" placeholder="Institution Address" rows="4"
+                          required></textarea>
+                <label for="institutionAddress">Institution Address</label>
+                <span id="institutionAddressError" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="state" required>
+                    <option value="" disabled selected>Select State</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Gujrat">Gujrat</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <!-- Add other state options as needed -->
+                </select>
+                <label for="state">Select State</label>
+                <span id="stateError" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="gender">Select Gender</label>
+                <span id="genderError" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="tel" class="form-control" id="mobileNumber" placeholder="Mobile Number" required>
+                <label for="mobileNumber">Mobile Number</label>
+                <span id="mobileNumberError" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="tel" class="form-control" id="whatsappNumber" placeholder="WhatsApp Number" required>
+                <label for="whatsappNumber">WhatsApp Number</label>
+                <span id="whatsappNumberError" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" placeholder="Email ID" required>
+                <label for="email">Email ID</label>
+                <span id="emailError" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="form-section" id="familyMemberSection" style="display: none;">
+    <div class="card__3" style="border-top: 4px solid rgb(255, 2, 162);">
+        <div class="profile-logo"
+             style="background: linear-gradient(to right, rgb(255, 0, 123), rgb(255, 81, 0), pink); padding: 20px; border-radius: 50%;">
+            <i class="bi bi-person-circle" style="font-size: 4rem; color: white;"></i>
+        </div>
+        <div>
+            <button class="rounded-button" onclick="addFamilyMember()">Add More Family Members</button>
+            <button class="rounded-button">Add More Delegates</button>
+        </div>
+    </div>
+</section>
+
+<div id="familyMembersContainer"></div>
+
+<section class="form-section total-amount-card" id="totalAmountCard" style="display: none;">
+    <div class="card__2">
+        <div class="card-header">
+            <h4><strong>Total Payable Amount</strong></h4>
+        </div>
+        <h3 style="color: orangered;"><strong> ₹<span id="totalAmount">6000.00</span></strong></h3>
+    </div>
+</section>
+
+<section class="form-section" id="termsSection">
+    <div class="card gradient-orange text-center wider-section">
+        <div class="card-body">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="agreeTerms">
+                <label class="form-check-label" for="agreeTerms">
+                    <span class="text-white">I agree to the</span>
+                    <a href="#" class="text-dark">Terms & Conditions</a>,
+                    <a href="#" class="text-dark">Privacy Policy</a>,
+                    <span class="text-white">and</span>
+                    <a href="#" class="text-dark">Refund Policy</a>.
                 </label>
-                <br>
-                <input type="radio" name="role" value="executive">
-                <label class="radio-container">Executive Committee Member
-                    <span class="checkmark"></span>
-                </label>
-            </form>
-        </div>
-    </section>
-
-    <section class="form-section" id="delegateSection" style="display: none;">
-        <h5 class="form-heading" style="color: orangered;">DELEGATE REGISTRATION</h5>
-        <h1 class="form-heading"><strong>Details</strong></h1>
-        <div class="card__2" id="delegateCard">
-            <div class="card-header">
-                <h4><strong>Registration Fees</strong></h4>
-                <div class="price" style="color: orangered;"><strong>₹6000</strong></div>
             </div>
-            
-            <form>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="yourName" placeholder="Your Name" required>
-                    <label for="yourName">Your Name</label>
-                    <span id="yourNameError" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="designation" placeholder="Designation" required>
-                    <label for="designation">Designation</label>
-                    <span id="designationError" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="instituteName" placeholder="Name of the Institute" required>
-                    <label for="instituteName">Name of the Institute</label>
-                    <span id="instituteNameError" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <textarea class="form-control" id="institutionAddress" placeholder="Institution Address" rows="4" required></textarea>
-                    <label for="institutionAddress">Institution Address</label>
-                    <span id="institutionAddressError" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="state" required>
-                        <option value="" disabled selected>Select State</option>
-                        <option value="Goa">Goa</option>
-                        <option value="Punjab">Punjab</option>
-                        <option value="Gujrat">Gujrat</option>
-                        <option value="Pune">Pune</option>
-                        <option value="Karnataka">Karnataka</option>
-                        <!-- Add other state options as needed -->
-                    </select>
-                    <label for="state">Select State</label>
-                    <span id="stateError" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="gender" required>
-                        <option value="" disabled selected>Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <label for="gender">Select Gender</label>
-                    <span id="genderError" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input type="tel" class="form-control" id="mobileNumber" placeholder="Mobile Number" required>
-                    <label for="mobileNumber">Mobile Number</label>
-                    <span id="mobileNumberError" class="text-danger"></span>
-                </div>
-                
-                <div class="form-floating mb-3">
-                    <input type="tel" class="form-control" id="whatsappNumber" placeholder="WhatsApp Number" required>
-                    <label for="whatsappNumber">WhatsApp Number</label>
-                    <span id="whatsappNumberError" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email" placeholder="Email ID" required>
-                    <label for="email">Email ID</label>
-                    <span id="emailError" class="text-danger"></span>
-                </div>
-            </form>
+            <button class="btn btn-secondary rounded-grey-button" onclick="proceedToPayment()">Proceed to Payment
+            </button>
         </div>
-    </section>
-  
-    <section class="form-section" id="familyMemberSection" style="display: none;">
-        <div class="card__3" style="border-top: 4px solid rgb(255, 2, 162);">
-            <div class="profile-logo" style="background: linear-gradient(to right, rgb(255, 0, 123), rgb(255, 81, 0), pink); padding: 20px; border-radius: 50%;">
-                <i class="bi bi-person-circle" style="font-size: 4rem; color: white;"></i>
-            </div>
-            <div>
-                <button class="rounded-button" onclick="addFamilyMember()">Add More Family Members</button>
-                <button class="rounded-button">Add More Delegates</button>
-            </div>
-        </div>
-    </section>
-    
-    <div id="familyMembersContainer"></div>
-    
-    <section class="form-section total-amount-card" id="totalAmountCard" style="display: none;">
-        <div class="card__2">
-            <div class="card-header">
-                <h4><strong>Total Payable Amount</strong></h4>
-            </div>
-            <h3 style="color: orangered;"><strong> ₹<span id="totalAmount">6000.00</span></strong></h3>
-        </div>
-    </section>
-    
-    <section class="form-section" id="termsSection">
-        <div class="card gradient-orange text-center wider-section">
-            <div class="card-body">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="agreeTerms">
-                    <label class="form-check-label" for="agreeTerms">
-                        <span class="text-white">I agree to the</span>
-                        <a href="#" class="text-dark">Terms & Conditions</a>,
-                        <a href="#" class="text-dark">Privacy Policy</a>,
-                        <span class="text-white">and</span>
-                        <a href="#" class="text-dark">Refund Policy</a>.
-                    </label>
-                </div>
-                <button class="btn btn-secondary rounded-grey-button" onclick="proceedToPayment()">Proceed to Payment</button>
-            </div>
-        </div>
-    </section>
-    
+    </div>
+</section>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
+
         // Get the radio buttons, the delegate card, and the delegate section
         var delegationRadio = document.querySelector('input[value="delegation"]');
         var delegateCard = document.getElementById('delegateCard');
         var delegateSection = document.getElementById('delegateSection');
         var totalAmountCard = document.getElementById('totalAmountCard');
+        var familyMemberSection = document.getElementById('familyMemberSection');
 
         // Set initial visibility based on the selected radio button
         toggleDelegateCard();
@@ -320,6 +329,54 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('whatsappNumber').addEventListener('input', function () {
             validateNumberInput('whatsappNumber', 'whatsappNumberError', 10);
         });
+
+        document.getElementById('yourName').addEventListener('input', function () {
+            var name = this.value;
+            var isValid = this.checkValidity();
+            document.getElementById('yourNameError').innerText = isValid ? '' : 'Please enter a valid name.';
+        });
+
+        // Validate Designation
+        document.getElementById('designation').addEventListener('input', function () {
+            var designation = this.value;
+            var isValid = this.checkValidity();
+            document.getElementById('designationError').innerText = isValid ? '' : 'Please enter a valid designation.';
+        });
+
+        // Validate Institute Name
+        document.getElementById('instituteName').addEventListener('input', function () {
+            var instituteName = this.value;
+            var isValid = this.checkValidity();
+            document.getElementById('instituteNameError').innerText = isValid ? '' : 'Please enter a valid institute name.';
+        });
+
+        // Validate Institution Address
+        document.getElementById('institutionAddress').addEventListener('input', function () {
+            var address = this.value;
+            var isValid = this.checkValidity();
+            document.getElementById('institutionAddressError').innerText = isValid ? '' : 'Please enter a valid address.';
+        });
+
+        // Validate Mobile Number
+        // document.getElementById('mobileNumber').addEventListener('input', function() {
+        //     var mobileNumber = this.value;
+        //     var isValid = this.checkValidity();
+        //     document.getElementById('mobileNumberError').innerText = isValid ? '' : 'Please enter a valid mobile number.';
+        // });
+
+        // Validate WhatsApp Number
+        // document.getElementById('whatsappNumber').addEventListener('input', function() {
+        //     var whatsappNumber = this.value;
+        //     var isValid = this.checkValidity();
+        //     document.getElementById('whatsappNumberError').innerText = isValid ? '' : 'Please enter a valid WhatsApp number.';
+        // });
+
+        // Validate Email
+        document.getElementById('email').addEventListener('input', function () {
+            var email = this.value;
+            var isValid = this.checkValidity();
+            document.getElementById('emailError').innerText = isValid ? '' : 'Please enter a valid email address.';
+        });
     });
 
     function addFamilyMember() {
@@ -335,10 +392,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" placeholder="Name" required>
                     <label>Name</label>
+                    <span id="Name" class="text-danger"></span>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="number" class="form-control" placeholder="Age" required>
                     <label>Age</label>
+                    <span id="Age" class="text-danger"></span>
                 </div>
                 <div class="form-floating mb-3">
                     <select class="form-select" required>
@@ -348,6 +407,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <option value="other">Other</option>
                     </select>
                     <label>Select Gender</label>
+                    <span id="Gender" class="text-danger"></span>
                 </div>
                 <button type="button" class="btn btn-danger" onclick="removeFamilyMember(this)">Delete</button>
             </form>
@@ -362,54 +422,120 @@ document.addEventListener('DOMContentLoaded', function () {
         updateTotalAmount();
     }
 
-function updateTotalAmount() {
-    var totalSpan = document.getElementById('totalAmount');
-    var remainingFamilyMembers = document.getElementById('familyMembersContainer').children.length;
+    function updateTotalAmount() {
+        var totalSpan = document.getElementById('totalAmount');
+        var remainingFamilyMembers = document.getElementById('familyMembersContainer').children.length;
 
-    if (remainingFamilyMembers > 0) {
-        // Assume you have a delegate card element with the ID 'delegateCard'
-        var delegateCard = document.getElementById('delegateCard');
+        if (remainingFamilyMembers > 0) {
+            // Assume you have a delegate card element with the ID 'delegateCard'
+            var delegateCard = document.getElementById('delegateCard');
 
-        if (delegateCard) {
-            // Get registration fees from delegate card
-            var registrationFeesContent = delegateCard.querySelector('.price strong').textContent;
+            if (delegateCard) {
+                // Get registration fees from delegate card
+                var registrationFeesContent = delegateCard.querySelector('.price strong').textContent;
 
-            // Remove non-numeric characters and parse as float
-            var registrationFeesFromCard2 = parseFloat(registrationFeesContent.replace(/[^\d.]/g, ''));
+                // Remove non-numeric characters and parse as float
+                var registrationFeesFromCard2 = parseFloat(registrationFeesContent.replace(/[^\d.]/g, ''));
 
-            if (!isNaN(registrationFeesFromCard2)) {
-                // Calculate total amount dynamically
-                var totalAmount = 6000 + registrationFeesFromCard2;
+                if (!isNaN(registrationFeesFromCard2)) {
+                    // Assume family member fees are ₹6000.00 per member
+                    var familyMemberFees = 6000.00;
 
-                // Update total amount in the span
-                totalSpan.textContent = '' + totalAmount.toFixed(2);
-            } else {
-                console.error("Failed to parse registration fees as a float. Using default value.");
-                totalSpan.textContent = '6000.00'; // Use a default value or adjust as needed
+                    // Calculate total amount
+                    var totalAmount = registrationFeesFromCard2 + (remainingFamilyMembers * familyMemberFees);
+
+                    // Display the total amount
+                    totalSpan.textContent = totalAmount.toFixed(2);
+                }
             }
         } else {
-            console.error("Delegate card not found.");
+            // No family members, show the delegate registration fees only
+            totalSpan.textContent = '6000.00';
         }
+    }
+
+    function proceedToPayment() {
+    // Check if the user has agreed to the terms and conditions
+    var agreeTermsCheckbox = document.getElementById('agreeTerms');
+    if (!agreeTermsCheckbox.checked) {
+        alert('Please agree to the terms and conditions.');
+        return;
+    }
+
+    // Validate all fields before proceeding to payment
+    if (!validateFields()) {
+        alert('Please fill in all the required fields with valid information.');
+        return;
+    }
+
+    var totalAmount = parseFloat(document.getElementById('totalAmount').textContent);
+
+    if (totalAmount > 0) {
+        // You can add your logic here to handle the payment process
+        alert('Proceeding to payment. Total Amount: ₹' + totalAmount.toFixed(2));
     } else {
-        // Reset total amount when no family members are added
-        totalSpan.textContent = '6000.00';
+        alert('Please ensure the total amount is greater than 0.');
     }
 }
 
+function validateFields() {
+    // Validate Delegate Information
+    var delegateName = document.getElementById('yourName').value;
+    var delegateDesignation = document.getElementById('designation').value;
+    var delegateInstitute = document.getElementById('instituteName').value;
+    var delegateAddress = document.getElementById('institutionAddress').value;
+    var delegateState = document.getElementById('state').value;
+    var delegateGender = document.getElementById('gender').value;
+    var delegateMobileNumber = document.getElementById('mobileNumber').value;
+    var delegateWhatsAppNumber = document.getElementById('whatsappNumber').value;
+    var delegateEmail = document.getElementById('email').value;
 
-    function proceedToPayment() {
-        var agreeTermsCheckbox = document.getElementById('agreeTerms');
-        var totalAmount = parseFloat(document.getElementById('totalAmount').textContent);
+    // Check if addFamilyMember is called
+    var familyMembersContainer = document.getElementById('familyMembersContainer');
+    var familyMembers = familyMembersContainer.querySelectorAll('.card__2');
 
-        if (agreeTermsCheckbox.checked && totalAmount > 0) {
-            // You can add your logic here to handle the payment process
-            alert('Proceeding to payment. Total Amount: ₹' + totalAmount.toFixed(2));
-        } else {
-            alert('Please agree to terms and conditions and ensure the total amount is greater than 0.');
+    // Validate Delegate Fields
+    document.getElementById('yourNameError').innerText = !delegateName ? 'Please enter a name.' : '';
+    document.getElementById('designationError').innerText = !delegateDesignation ? 'Please enter a designation.' : '';
+    document.getElementById('instituteNameError').innerText = !delegateInstitute ? 'Please enter an institute name.' : '';
+    document.getElementById('institutionAddressError').innerText = !delegateAddress ? 'Please enter an address.' : '';
+    document.getElementById('stateError').innerText = !delegateState ? 'Please select a state.' : '';
+    document.getElementById('genderError').innerText = !delegateGender ? 'Please select a gender.' : '';
+    document.getElementById('mobileNumberError').innerText = !delegateMobileNumber ? 'Please enter a mobile number.' : '';
+    document.getElementById('whatsappNumberError').innerText = !delegateWhatsAppNumber ? 'Please enter a WhatsApp number.' : '';
+    document.getElementById('emailError').innerText = !delegateEmail ? 'Please enter an email address.' : '';
+
+    // Validate Family Member Information (if addFamilyMember is called)
+    if (familyMembers.length > 0) {
+        // Validate Family Member Fields
+        var familyMemberName = familyMembers[0].querySelector('input[placeholder="Name"]').value;
+        var familyMemberAge = familyMembers[0].querySelector('input[placeholder="Age"]').value;
+        var familyMemberGender = familyMembers[0].querySelector('select').value;
+
+        // Validate Family Member Fields
+        familyMembers[0].querySelector('.text-danger#Name').innerText = !familyMemberName ? 'Please enter a name.' : '';
+        familyMembers[0].querySelector('.text-danger#Age').innerText = !/^\d{2}$/.test(familyMemberAge.replace(/\D/g, '')) ? 'Please enter a valid 2-digit age. Example: 02' : '';
+        familyMembers[0].querySelector('.text-danger#Gender').innerText = familyMemberGender === '' ? 'Please select a gender.' : '';
+
+        // If any validation fails, return false
+        if (!familyMemberName || !/^\d{2}$/.test(familyMemberAge.replace(/\D/g, '')) || familyMemberGender === '') {
+            return false;
         }
     }
+    // Add more validation conditions as needed
+
+    // Check if there are any validation errors
+    var validationErrors = document.querySelectorAll('.text-danger');
+    for (var i = 0; i < validationErrors.length; i++) {
+        if (validationErrors[i].innerText) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
